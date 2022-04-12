@@ -6,6 +6,7 @@ func Run() {
 	g := gin.Default()
 
 	g.POST("/record", PostRecord)
+	g.POST("/comment", PostComment)
 
 	err := g.Run(":678")
 	if err != nil {
