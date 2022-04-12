@@ -4,6 +4,7 @@ import "github.com/gin-gonic/gin"
 
 func Run() {
 	g := gin.Default()
+	g.Use(Cors())
 
 	g.POST("/record", PostRecord)
 	g.POST("/comment", PostComment)
