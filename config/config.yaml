@@ -4,4 +4,4 @@ mysql:
   host: 127.0.0.1
   password: 1351698043whl
   param: charset=utf8mb4&parseTime=True&loc=Local
-  dbname: vlink
+  dbname: fighting
