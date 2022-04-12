@@ -23,3 +23,13 @@ func PostRecord(c *gin.Context) {
 	RespondSuccess(c, data)
 	return
 }
+
+func GetRecordNumber(c *gin.Context) {
+	code, data := service.GetRecordNumber()
+	if code != 0 {
+		RespondError(c, code)
+		return
+	}
+
+	RespondSuccess(c, data)
+}

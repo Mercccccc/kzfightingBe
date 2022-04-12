@@ -15,3 +15,9 @@ func (s *Record) Retrieve() error {
 func (s *Record) Create() error {
 	return DB.Model(s).Where(s).Create(s).Error
 }
+
+func GetRecordNumber() (int64, error) {
+	var number int64
+	err := DB.Model(&Record{}).Table("records").Count(&number).Error
+	return number, err
+}

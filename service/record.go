@@ -18,3 +18,14 @@ func PostRecord(req *dto.PostRecord) (uint, map[string]interface{}) {
 
 	return SuccessCode, nil
 }
+
+func GetRecordNumber() (uint, map[string]interface{}) {
+	number, err := dao.GetRecordNumber()
+	if err != nil {
+		return ServerError, nil
+	}
+
+	return SuccessCode, map[string]interface{}{
+		"number": number,
+	}
+}
