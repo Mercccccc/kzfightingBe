@@ -9,6 +9,7 @@ func Run() {
 	g.POST("/record", PostRecord)
 	g.POST("/comment", PostComment)
 	g.GET("/records/number", GetRecordNumber)
+	g.GET("/records", GetRecordByPage)
 
 	err := g.Run(":678")
 	if err != nil {

@@ -29,3 +29,14 @@ func GetRecordNumber() (uint, map[string]interface{}) {
 		"number": number,
 	}
 }
+
+func GetRecordByPage(req dto.GetRecord) (uint, map[string]interface{}) {
+	records, err := dao.GetRecordByPage(req.Page)
+	if err != nil {
+		return ServerError, nil
+	}
+
+	return SuccessCode, map[string]interface{}{
+		"records": records,
+	}
+}
