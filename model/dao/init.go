@@ -25,7 +25,7 @@ func DBinit(con config.Config) {
 	if err != nil {
 		panic(err)
 	}
-	err = DB.AutoMigrate()
+	err = DB.AutoMigrate(&Record{}, &Comment{})
 	if err != nil {
 		panic(err)
 	}
