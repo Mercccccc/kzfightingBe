@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"kzfighting/model/dto"
 	"kzfighting/service"
+	"strconv"
 )
 
 func PostComment(c *gin.Context) {
@@ -15,6 +16,28 @@ func PostComment(c *gin.Context) {
 	}
 
 	code, data := service.PostComment(req)
+	if code != 0 {
+		RespondError(c, code)
+		return
+	}
+
+	RespondSuccess(c, data)
+}
+
+func GetComment(c *gin.Context) {
+	var req dto.GetComment
+	recordID, err := strconv.Atoi(c.DefaultQuery("record_id", "0"))
+	if err != nil {
+		RespondError(c, service.CommitDataError)
+		return
+	}
+	if recordID == 0 {
+		RespondError(c, service.CommitDataError)
+		return
+	}
+
+	req.RecordID = uint(recordID)
+	code, data := service.GetComment(req)
 	if code != 0 {
 		RespondError(c, code)
 		return
