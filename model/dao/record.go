@@ -25,6 +25,6 @@ func GetRecordNumber() (int64, error) {
 func GetRecordByPage(number uint) ([]Record, error) {
 	var t []Record
 	err := DB.Model(&Record{}).Table("records").
-		Where("id >= ? AND id <= ?", number, 10*number).Find(&t).Error
+		Where("id >= ? AND id < ?", 10*(number-1), 10*number).Find(&t).Error
 	return t, err
 }
